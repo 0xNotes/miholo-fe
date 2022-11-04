@@ -1,6 +1,18 @@
+// universal colors
+$white : #fff;
+$pink : #f6cbcb;
+$grey: #707070;
+$transition : all .3s ease-in-out;
+
 body {
-    background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
+    background-image: url("../assets/bgtile1.gif");
     overflow-x: hidden;
     object-fit: fill;
+}
 
+.Container{
+    width: auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
 }

@@ -1,10 +1,10 @@
-import Home from "./pages/home";
+import Premint from "./pages/premint";
 import "./styles/styles.css";
 
 function App() {
   return (
     <div className="App">
-      <Home/>
+      <Premint/>
     </div>
   );
 }

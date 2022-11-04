@@ -1,6 +1,29 @@
 body {
-  background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
+  background-image: url("../assets/bgtile1.gif");
   overflow-x: hidden;
   -o-object-fit: fill;
      object-fit: fill;
+}
+
+.Container {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.TextContainer {
+  display: flex;
+  flex-direction: column;
+  color: #707070;
+  border: 2px solid #707070;
+}
+
+.TopBox {
+  border-bottom: 2px solid #707070;
+  padding-left: 1rem;
+}
+
+.BottomBox {
+  padding-left: 2rem;
 }/*# sourceMappingURL=styles.css.map */

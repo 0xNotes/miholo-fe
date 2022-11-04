@@ -1,0 +1,15 @@
+.TextContainer{
+    display: flex;
+    flex-direction: column;
+    color: $grey;
+    border: 2px solid $grey;
+}
+
+.TopBox{
+    border-bottom: 2px solid $grey;
+    padding-left: 1rem;
+}
+
+.BottomBox{
+    padding-left: 2rem;
+}
