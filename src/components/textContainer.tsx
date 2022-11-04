@@ -6,6 +6,7 @@ type Props = {
     bottomText: string;
     bottomColor: string;
     subscribe: boolean;
+    picture: boolean;
     
 
 };
@@ -16,6 +17,7 @@ export default function TextContainer({
     bottomText,
     bottomColor,
     subscribe,
+    picture,
  }: Props
 
 ) {
