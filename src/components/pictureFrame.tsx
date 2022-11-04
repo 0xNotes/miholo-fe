@@ -10,9 +10,9 @@ export default function PictureFrame(
     }: Props
 ) {
     return (
-        <div className="FrameContainer" style={{border: "1px solid salmon"}}>
+        <div className="FrameContainer" >
             <div className="CollectionText">{collection}</div>
-            <img src={image} style={{transform: "scale(0.5)"}}></img>
+            <img src={image} style={{height: "310px", width: "250px", objectFit: "cover"}}></img>
         </div>
 
     );

@@ -70,10 +70,12 @@ body {
 .FrameContainer {
   display: flex;
   flex-direction: column;
+  margin-bottom: 2rem;
 }
 
 .PictureBox {
   display: flex;
   flex-wrap: wrap;
-  border: 1px solid forestgreen;
+  justify-content: space-between;
+  margin-top: 1rem;
 }/*# sourceMappingURL=styles.css.map */

@@ -1,5 +1,6 @@
 .PictureBox{
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid forestgreen;
+    justify-content: space-between;
+    margin-top: 1rem;
 }
