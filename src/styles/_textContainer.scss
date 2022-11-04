@@ -1,19 +1,23 @@
 .TextContainer{
     display: flex;
+    //align-self: flex-start;
     flex-direction: column;
     color: $grey;
     border: 2px solid $grey;
-    width: 60%;
+    width: 55%;
+    font-size: larger;
 }
 
 .TopBox{
     border-bottom: 2px solid $grey;
+    padding: 1rem;
     padding-left: 1rem;
     padding-top: .5rem;
     padding-bottom: .5rem;
 }
 
 .BottomBox{
+    padding: 1rem;
     padding-left: 2rem;
     padding-top: .5rem;
     padding-bottom: .5rem;

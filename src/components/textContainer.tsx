@@ -1,22 +1,26 @@
 type Props = {
     topText: string;
+    topColor: string;
     bottomText: string;
-    reversed: boolean;
+    bottomColor: string;
+    
+
 };
 
 export default function TextContainer({
     topText,
+    topColor,
     bottomText,
-    reversed, }: Props
+    bottomColor,
+ }: Props
 
 ) {
     return (
         <div className="TextContainer">
-            <div className="TopBox" style={{ backgroundColor: "#f6cbcb" }}>
+            <div className="TopBox" style={{ backgroundColor: topColor }}>
                 {topText}
-                {reversed}
             </div>
-            <div className="BottomBox" style={{ backgroundColor: "#ffffff" }}>
+            <div className="BottomBox" style={{ backgroundColor: bottomColor}}>
                 {bottomText}
             </div>
         </div>

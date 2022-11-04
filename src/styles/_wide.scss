@@ -6,13 +6,30 @@ $transition : all .3s ease-in-out;
 
 body {
     background-image: url("../assets/bgtile1.gif");
-    overflow-x: hidden;
+    //overflow-x: hidden;
     object-fit: fill;
 }
 
 .Container{
-    width: auto;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.ImgTextBlock{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.DetailsText{
+    color: #ffffff;
+    font-size: larger;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 55%;
 }

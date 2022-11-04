@@ -1,15 +1,31 @@
 body {
   background-image: url("../assets/bgtile1.gif");
-  overflow-x: hidden;
   -o-object-fit: fill;
      object-fit: fill;
 }
 
 .Container {
-  width: auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.ImgTextBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.DetailsText {
+  color: #ffffff;
+  font-size: larger;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 55%;
 }
 
 .TextContainer {
@@ -17,17 +33,20 @@ body {
   flex-direction: column;
   color: #707070;
   border: 2px solid #707070;
-  width: 60%;
+  width: 55%;
+  font-size: larger;
 }
 
 .TopBox {
   border-bottom: 2px solid #707070;
+  padding: 1rem;
   padding-left: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
 
 .BottomBox {
+  padding: 1rem;
   padding-left: 2rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
