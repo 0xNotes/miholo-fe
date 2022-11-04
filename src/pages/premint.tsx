@@ -12,10 +12,11 @@ export default function Home() {
             <div className="ImgTextBlock">
                 <img src={pc} style={{width: "10%", height: "10%", marginLeft: "4rem"}} ></img>
                 <TextContainer
-                    topText="Welcome to MiHolograms!"
+                    topText="Welcome to MiHolograms! 홀로그램에 오신 것을 환영합니다"
                     topColor="#f6cbcb"
                     bottomText="MiHolograms are a limited-release collection of 180 unique 1/1 holographic prints made as a collaboration between artists *olive oil* and *SpyMilk*."
                     bottomColor="#ffffff"
+                    subscribe={false}
                 />
                 <img src={pc} style={{width: "10%", height: "10%" , marginRight: "4rem"}} ></img>
             </div>
@@ -29,8 +30,9 @@ export default function Home() {
             <TextContainer 
             topText="MiHologram Minting"
             topColor="#ffffff"
-            bottomText="This collection"
+            bottomText="The limited collection of 180 MiHolograms will be simultaneously released for .18 eth each on November, 25, 2022. Sign Up to receive a notification for the collection release:"
             bottomColor="#f6cbcb"
+            subscribe={true}
             />
         </div>
     );

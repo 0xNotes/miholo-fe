@@ -1,8 +1,11 @@
+import SubscribeBox from "./subscribeBox";
+
 type Props = {
     topText: string;
     topColor: string;
     bottomText: string;
     bottomColor: string;
+    subscribe: boolean;
     
 
 };
@@ -12,6 +15,7 @@ export default function TextContainer({
     topColor,
     bottomText,
     bottomColor,
+    subscribe,
  }: Props
 
 ) {
@@ -22,6 +26,8 @@ export default function TextContainer({
             </div>
             <div className="BottomBox" style={{ backgroundColor: bottomColor}}>
                 {bottomText}
+                {subscribe? <SubscribeBox/> : <div></div>}
+
             </div>
         </div>
 
