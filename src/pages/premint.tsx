@@ -4,6 +4,9 @@ import dna from "../assets/dna.gif";
 import pc from "../assets/pc.gif";
 import scientist from "../assets/scientist.gif";
 import wings from "../assets/wings.gif";
+import PictureFrame from "../components/pictureFrame";
+import Milady from "../assets/milady.jpg";
+
 
 export default function Home() {
     return (
@@ -45,6 +48,8 @@ export default function Home() {
                 subscribe={false}
                 picture={true}
             />
+                        <PictureFrame collection="Milady Maker" image={Milady}/>
+
         </div>
     );
 }

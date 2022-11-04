@@ -59,4 +59,21 @@ body {
   justify-content: center;
   margin-top: 2rem;
   margin-bottom: 2rem;
+}
+
+.CollectionText {
+  font-size: larger;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+}
+
+.FrameContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.PictureBox {
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid forestgreen;
 }/*# sourceMappingURL=styles.css.map */
