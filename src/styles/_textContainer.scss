@@ -3,13 +3,18 @@
     flex-direction: column;
     color: $grey;
     border: 2px solid $grey;
+    width: 60%;
 }
 
 .TopBox{
     border-bottom: 2px solid $grey;
     padding-left: 1rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }
 
 .BottomBox{
     padding-left: 2rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }

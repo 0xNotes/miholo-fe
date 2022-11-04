@@ -9,7 +9,7 @@ body {
   width: auto;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 
 .TextContainer {
@@ -17,13 +17,18 @@ body {
   flex-direction: column;
   color: #707070;
   border: 2px solid #707070;
+  width: 60%;
 }
 
 .TopBox {
   border-bottom: 2px solid #707070;
   padding-left: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .BottomBox {
   padding-left: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }/*# sourceMappingURL=styles.css.map */
