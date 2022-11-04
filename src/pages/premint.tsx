@@ -47,6 +47,13 @@ export default function Home() {
                 subscribe={false}
                 picture={true}
             />
+            <div className="GifBlock">
+                <img src={scientist}  style={{width: "10%"}}/>
+                <img src={dna} style={{width: "10%"}}/>
+                <img src={wings}  style={{width: "20%"}}/>
+                <img src={dna}  style={{width: "10%"}}/>
+                <img src={scientist} style={{width: "10%"}}/>
+            </div>
 
         </div>
     );
