@@ -1,4 +1,5 @@
 import TextContainer from "../components/textContainer"
+import MultiBox from "../components/multiBox";
 import logo from "../assets/logo.gif";
 import dna from "../assets/dna.gif";
 import pc from "../assets/pc.gif";
@@ -47,6 +48,8 @@ export default function Home() {
                 subscribe={false}
                 picture={true}
             />
+            <MultiBox/>
+
             <div className="GifBlock">
                 <img src={scientist}  style={{width: "10%"}}/>
                 <img src={dna} style={{width: "10%"}}/>

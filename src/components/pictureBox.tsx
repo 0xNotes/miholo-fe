@@ -17,7 +17,7 @@ export default function PictureBox() {
             <PictureFrame collection="Anti-Miladies" image={AntiMilady}/>
             <PictureFrame collection="Bored Milady Maker" image={BoredMiladyMaker}/>
             <PictureFrame collection="Milady, That B.I.T.C.H" image={Bitch}/>
-            <div style={{width: "100%"}}>... and more!!!</div>
+            <div style={{width: "100%", paddingBottom: "1rem"}}>... and more!!!</div>
         </div>
 
     );

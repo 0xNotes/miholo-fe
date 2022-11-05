@@ -1,5 +1,6 @@
 import SubscribeBox from "./subscribeBox";
 import PictureBox from "./pictureBox";
+import MultiBox from "./multiBox";
 
 type Props = {
     topText: string;
@@ -8,7 +9,7 @@ type Props = {
     bottomColor: string;
     subscribe: boolean;
     picture: boolean;
-    
+
 
 };
 
@@ -31,7 +32,6 @@ export default function TextContainer({
                 {bottomText}
                 {subscribe? <SubscribeBox/> : <div></div>}
                 {picture? <PictureBox/> : <div></div>}
-
             </div>
         </div>
 
