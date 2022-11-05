@@ -1,7 +1,30 @@
 .SubscribeBox{
     display: flex;
-    width: 100%;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     margin-top: 2rem;
     margin-bottom: 2rem;
+}
+
+.InputText{
+    text-align: center;
+    width: 15rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    margin-bottom: 0.5rem;
+    font-size: medium;
+    border: 2px solid black;
+}
+
+.SubmitButton{
+    display: flex;
+    width: 15.5rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    justify-content: center;
+    color: $grey;
+    background-color: #f2e3e3;
+    font-size: medium;
+    font-weight: bold;
 }
