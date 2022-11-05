@@ -1,0 +1,15 @@
+.VideoContainer{
+    border: 2px solid $grey;
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.VideoBottom{
+    color: $white;
+    font-size: larger;
+    text-align: center;
+    padding-top: 2rem;
+}

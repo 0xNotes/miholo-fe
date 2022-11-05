@@ -1,5 +1,6 @@
 import TextContainer from "../components/textContainer"
 import MultiBox from "../components/multiBox";
+import VideoBox from "../components/videoBox";
 import logo from "../assets/logo.gif";
 import dna from "../assets/dna.gif";
 import pc from "../assets/pc.gif";
@@ -48,6 +49,7 @@ export default function Home() {
                 subscribe={false}
                 picture={true}
             />
+            <VideoBox/>
             <MultiBox/>
 
             <div className="GifBlock">
