@@ -11,7 +11,7 @@ import ShippingBox from "../components/shippingBox";
 
 export default function Home() {
 
-    const shipping = false;
+    const shipping = true;
 
     return (
         <div className="Container">
