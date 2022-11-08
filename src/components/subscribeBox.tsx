@@ -70,7 +70,7 @@ export default function SubscribeBox() {
   return (
     <div className="SubscribeBox">
       <form onSubmit={onSubmit}>
-        <input className="InputText" type="text" placeholder="your email..." {...register("Email", { required: true, pattern: /^\S+@\S+$/i })} />
+        <input className="InputText" type="email" placeholder="your email..." {...register("Email", { required: true, pattern: /^\S+@\S+$/i })} />
 
         <input className="SubmitButton" value={subscribeText} type="submit" />
       </form>

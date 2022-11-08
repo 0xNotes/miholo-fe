@@ -1,0 +1,29 @@
+.ButtonCenter{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ShippingInputText{
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    margin-bottom: 0.5rem;
+    font-size: medium;
+    border: 2px solid black;
+}
+
+.ShippingForm{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10rem;
+    margin-right: 10rem;
+    margin-top: 0.75rem;
+}
+
+.ShipingFormBottom{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
