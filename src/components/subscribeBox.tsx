@@ -1,24 +1,41 @@
 import axios from "axios";
+import { useForm, Resolver } from 'react-hook-form';
+import { useState } from 'react';
 
-type EmailResponse ={
-    email: string;
+
+type EmailResponse = {
+  email: string;
 };
 
-type ShippingResponse ={
-    name: string;
-    address_line_1: string;
-    address_line_2: string;
-    city_state_zip: string;
-    country: string;
-}
+type FormValues = {
+  Email: string;
+};
 
 
-async function addEmail(inputEmail: string) {
+const resolver: Resolver<FormValues> = async (values) => {
+  return {
+    values: values.Email ? values : {},
+    errors: !values.Email
+      ? {
+          Email: {
+            type: 'required',
+            message: 'This is required.',
+          },
+        }
+      : {},
+  };
+};
+
+
+export default function SubscribeBox() {
+
+
+  async function addEmail(inputEmail: string) {
     try {
       // 👇️ const data: CreateUserResponse
       const { data } = await axios.post<EmailResponse>(
         'http://127.0.0.1:5000/add_email',
-        { email: inputEmail},
+        { email: inputEmail },
         {
           headers: {
             'Content-Type': 'application/json',
@@ -28,7 +45,7 @@ async function addEmail(inputEmail: string) {
       );
   
       console.log(JSON.stringify(data, null, 4));
-  
+      setSubscribeText("Subscribed!")
       return data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -42,47 +59,29 @@ async function addEmail(inputEmail: string) {
     }
   }
 
-async function addShipping(inputName: string, inputAddress1: string, inputAddress2: string, inputCityStateZip: string, inputCountry: string) {
-    try {
-      // 👇️ const data: CreateUserResponse
-      const { data } = await axios.post<ShippingResponse>(
-        'http://127.0.0.1:5000/add_shipping',
-        { name: inputName, address_line_1: inputAddress1, address_line_2: inputAddress2, city_state_zip: inputCityStateZip, country: inputCountry},
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-        },
-      );
-  
-      console.log(JSON.stringify(data, null, 4));
-  
-      return data;
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.log('error message: ', error.message);
-        // 👇️ error: AxiosError<any, any>
-        return error.message;
-      } else {
-        console.log('unexpected error: ', error);
-        return 'An unexpected error occurred';
-      }
-    }
-  }
+  const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({ resolver });
+  const onSubmit = handleSubmit((data) => addEmail(data.Email));
+  const [subscribeText, setSubscribeText] = useState("Subscribe");
 
-export default function SubscribeBox() {
-    return (
-        <form className="SubscribeBox">
-            <div>
+
+  //const onSubmit = handleSubmit((data) => console.log(data.Email));
+  //console.log(errors);
+
+  return (
+    <div className="SubscribeBox">
+      <form onSubmit={onSubmit}>
+        <input className="InputText" type="text" placeholder="your email..." {...register("Email", { required: true, pattern: /^\S+@\S+$/i })} />
+
+        <input className="SubmitButton" value={subscribeText} type="submit" />
+      </form>
+      {/* <div>
                 <input className="InputText" type="email" placeholder="your email..." name="name" />
             </div>
             <div>
-                <input className="SubmitButton" type="submit" value="Subscribe" />
+                <input className="SubmitButton" type="submit" onSubmit={handleSubmit} value="Subscribe" />
                 <button onClick={ () => addEmail("fromReact@gmail.com")}>Email</button>
-                <button onClick={ () => addShipping("john", "420 Blaze It Lane", "APPT: REAR", "Methton, Kholia, 69696", "USA")}>Ship</button>
 
-            </div>
-        </form>
-    );
+            </div> */}
+    </div>
+  );
 }
