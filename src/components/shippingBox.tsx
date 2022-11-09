@@ -9,18 +9,20 @@ type ShippingResponse = {
     name: string;
     address_line_1: string;
     address_line_2: string;
-    city_state_zip: string;
+    city: string;
+    state: string;
+    zip: string;
     country: string;
 }
 
 
 
-async function addShipping(inputName: string, inputAddress1: string, inputAddress2: string, inputCityStateZip: string, inputCountry: string) {
+async function addShipping(inputName: string, inputAddress1: string, inputAddress2: string, inputCity: string, inputState: string, inputZip: string, inputCountry: string) {
     try {
         // 👇️ const data: CreateUserResponse
         const { data } = await axios.post<ShippingResponse>(
             'http://127.0.0.1:5000/add_shipping',
-            { name: inputName, address_line_1: inputAddress1, address_line_2: inputAddress2, city_state_zip: inputCityStateZip, country: inputCountry },
+            { name: inputName, address_line_1: inputAddress1, address_line_2: inputAddress2, city_state_zip: inputCity, inputState, inputZip, country: inputCountry },
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -67,10 +69,11 @@ export default function ShippingBox() {
                         <input className="ShippingInputText" type="text" placeholder="Name" />
                         <input className="ShippingInputText" type="text" placeholder="Address Line 1" />
                         <input className="ShippingInputText" type="text" placeholder="Address Line 2" />
-                        <input className="ShippingInputText" type="text" placeholder="Address Line 1" />
                         <div className="ShipingFormBottom">
-                            <input className="ShippingInputText" style={{ width: "65%" }} type="text" placeholder="City, State, Zip" />
-                            <input className="ShippingInputText" style={{ width: "30%" }} type="text" placeholder="Country" />
+                            <input className="ShippingInputText" style={{ width: "25%" }} type="text" placeholder="City" />
+                            <input className="ShippingInputText" style={{ width: "25%" }} type="text" placeholder="State" />
+                            <input className="ShippingInputText" style={{ width: "20%" }} type="text" placeholder="Zip" />
+                            <input className="ShippingInputText" style={{ width: "20%" }} type="text" placeholder="Country" />
                         </div>
                     </form>
                 </div>
@@ -84,7 +87,7 @@ export default function ShippingBox() {
                         </div>
                         :
                         <div className="ButtonCenter">
-                            <button className="SubmitButton" style={{ marginBottom: "0.25rem" }}> Mint 1 for .18 ETH</button>
+                            <button className="SubmitButton" style={{ marginBottom: "0.25rem" }}>Mint 1 for .18 ETH</button>
                             <button className="SubmitButton" style={{ marginBottom: "0.25rem" }}>Mint 3 for .5 ETH</button>
                             <button className="SubmitButton" style={{ marginBottom: "1.5rem" }}>Mint 10 for 1.5 ETH</button>
                         </div>}
@@ -92,8 +95,6 @@ export default function ShippingBox() {
 
                 </div>
             </div>
-            {/* <button onClick={() => addShipping("john", "420 Blaze It Lane", "APPT: REAR", "Methton, Kholia, 69696", "USA")}>Ship</button> */}
-
         </div>
 
     );
