@@ -15,6 +15,16 @@ type ShippingResponse = {
     country: string;
 }
 
+type FormValues = {
+    name: string;
+    address_line_1: string;
+    address_line_2: string;
+    city: string;
+    state: string;
+    zip: string;
+    country: string;
+};
+
 
 
 async function addShipping(inputName: string, inputAddress1: string, inputAddress2: string, inputCity: string, inputState: string, inputZip: string, inputCountry: string) {
@@ -52,6 +62,12 @@ export default function ShippingBox() {
     const { isConnected } = useAccount();
 
 
+    const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
+    const submit1 = handleSubmit((data) => console.log(data));
+    const submit2 = handleSubmit((data) => console.log(data));
+    const submit3 = handleSubmit((data) => console.log(data));
+
+
     return (
         <div className="TextContainer">
             <div className="TopBox" style={{ background: "#ffffff" }}>
@@ -65,34 +81,35 @@ export default function ShippingBox() {
                     <div style={{ marginLeft: "12rem", marginTop: "1.5rem" }}>
                         Mailing Address
                     </div>
-                    <form className="ShippingForm">
-                        <input className="ShippingInputText" type="text" placeholder="Name" />
-                        <input className="ShippingInputText" type="text" placeholder="Address Line 1" />
-                        <input className="ShippingInputText" type="text" placeholder="Address Line 2" />
-                        <div className="ShipingFormBottom">
-                            <input className="ShippingInputText" style={{ width: "25%" }} type="text" placeholder="City" />
-                            <input className="ShippingInputText" style={{ width: "25%" }} type="text" placeholder="State" />
-                            <input className="ShippingInputText" style={{ width: "20%" }} type="text" placeholder="Zip" />
-                            <input className="ShippingInputText" style={{ width: "20%" }} type="text" placeholder="Country" />
+                    <form>
+                        <div className="ShippingForm">
+                            <input className="ShippingInputText" type="text" placeholder="Name" {...register("name", { required: true })} />
+                            <input className="ShippingInputText" type="text" placeholder="Address Line 1" {...register("address_line_1", { required: true })} />
+                            <input className="ShippingInputText" type="text" placeholder="Address Line 2" {...register("address_line_2", { required: false })} />
+                            <div className="ShipingFormBottom">
+                                <input className="ShippingInputText" style={{ width: "25%" }} type="text" placeholder="City"  {...register("city", { required: true })} />
+                                <input className="ShippingInputText" style={{ width: "25%" }} type="text" placeholder="State" {...register("state", { required: true })} />
+                                <input className="ShippingInputText" style={{ width: "20%" }} type="text" placeholder="Zip" {...register("zip", { required: true })} />
+                                <input className="ShippingInputText" style={{ width: "20%" }} type="text" placeholder="Country" {...register("country", { required: true })} />
+                            </div>
                         </div>
-                    </form>
-                </div>
-                <div style={{ borderBottom: "1px solid #707070", marginBottom: "1rem" }} />
-                <div>
-                    <div>MiHolograms are now Minting!!!</div>
-                    <div>MiHolograms Minted: <span style={{ fontWeight: "bold" }}>{num} / 180</span></div>
-                    {!isConnected ?
+                        <div style={{ borderBottom: "1px solid #707070", marginBottom: "1rem", width: "100%" }} />
+                        <div>MiHolograms are now Minting!!!</div>
+                        <div>MiHolograms Minted: <span style={{ fontWeight: "bold"}}>{num} / 180</span></div>
+                        {!isConnected ?
                         <div className="ButtonCenter">
                             <CustomConnect />
                         </div>
                         :
                         <div className="ButtonCenter">
-                            <button className="SubmitButton" style={{ marginBottom: "0.25rem" }}>Mint 1 for .18 ETH</button>
-                            <button className="SubmitButton" style={{ marginBottom: "0.25rem" }}>Mint 3 for .5 ETH</button>
-                            <button className="SubmitButton" style={{ marginBottom: "1.5rem" }}>Mint 10 for 1.5 ETH</button>
+                            <button className="SubmitButton" onClick={submit1} style={{ marginTop: "1rem", marginBottom: "0.25rem" }}>Mint 1 for .18 ETH</button>
+                            <button className="SubmitButton" onClick={submit2} style={{ marginBottom: "0.25rem" }}>Mint 3 for .5 ETH</button>
+                            <button className="SubmitButton" onClick={submit3} style={{ marginBottom: "1.5rem" }}>Mint 10 for 1.5 ETH</button>
                         </div>}
 
-
+                    </form>
+                </div>
+                <div>
                 </div>
             </div>
         </div>
