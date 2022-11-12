@@ -25,8 +25,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 55%;
-  margin-bottom: 2rem;
+  max-width: 43em;
+  margin: 3em 1em 3em 1em;
 }
 
 .GifBlock {
@@ -44,24 +44,21 @@ body {
   justify-content: center;
   flex-direction: column;
   color: #707070;
-  border: 2px solid #707070;
-  width: 55%;
+  border: 1px solid #f6cbcb;
+  max-width:  43em;
+  margin-left: 1em;
+  margin-right: 1em;
   font-size: larger;
 }
 
 .TopBox {
-  border-bottom: 2px solid #707070;
-  padding: 1rem;
-  padding-left: 1rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding: 0.1rem 1rem;
 }
 
 .BottomBox {
-  padding: 1rem;
-  padding-left: 2rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  padding: 0.5em;
+  padding-left: 2em;
+  padding-bottom: 1em;
 }
 
 .SubscribeBox {

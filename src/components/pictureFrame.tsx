@@ -11,8 +11,8 @@ export default function PictureFrame(
 ) {
     return (
         <div className="FrameContainer" >
-            <div className="CollectionText">{collection}</div>
             <img src={image} style={{height: "310px", width: "250px", objectFit: "cover"}}></img>
+            <div className="CollectionText">{collection}</div>
         </div>
 
     );
