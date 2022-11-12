@@ -1,7 +1,14 @@
+@font-face {
+  font-family: Hiragino;
+  src:  url('../assets/Hiragino_W3.otf') format('oft')
+}
+
+
 body {
   background-image: url("../assets/bgtile1.gif");
   -o-object-fit: fill;
      object-fit: fill;
+  font-family: Hiragino, sans-serif;
 }
 
 .Container {

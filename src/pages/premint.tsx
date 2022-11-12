@@ -54,7 +54,7 @@ export default function Home() {
 
             <div style={{ width: "55%", borderBottom: "1px solid #ffffff", marginTop: "5rem", marginBottom: "5rem" }} />
             <TextContainer
-                topText="The many tribes of Milady meet in the Holographic Realm"
+                topText="The Tribes of Milady Meet in the Holographic Realm"
                 topColor="#f6cbcb"
                 bottomText="MiHolograms are generated from a mix of Milady and Milady derivatives, carefully curated to represent network spirituality. Rare MiHolgrams include memes made by the community and synchronous trait overlaps. We are thankful for the artistic contributions of the following communities, whose images are all included in MiHolograms:"
                 bottomColor="#ffffff"
