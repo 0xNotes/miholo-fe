@@ -18,7 +18,9 @@ export default function Home() {
         <div className="Container">
             <img src={logo} style={{ marginTop: "4rem" }}></img>
             <div className="ImgTextBlock">
+                <div className="sideGif">
                 <a href="https://www.sacred-texts.com/jud/doth/doth36.htm" target="_blank"><img src={pc} style={{ width: "10%", height: "10%", marginLeft: "4rem" }} ></img></a>
+                </div>    
                 <TextContainer
                     topText="Welcome to MiHolograms! 홀로그램에 오신 것을 환영합니다"
                     topColor="#f6cbcb"
@@ -27,10 +29,12 @@ export default function Home() {
                     subscribe={false}
                     picture={false}
                 />
+                <div className="sideGif">
                 <a href="https://whatisnuclear.com/radiation-on-flights.html" target="_blank"><img src={pc} style={{ width: "10%", height: "10%", marginRight: "4rem" }} ></img></a>
+                </div>
             </div>
             <div className="DetailsText">
-                <span style={{ textDecoration: "underline", fontWeight: "bold", marginBottom: "2rem" }}>Details</span>
+                <span style={{ textDecoration: "underline", fontWeight: "bold", marginBottom: "2rem", text-align:"center" }}>Details</span>
                 <div style={{ marginBottom: "1rem" }}><span style={{ fontWeight: "bold" }}>-Loving Respect for the Miladyverse: </span> <span>Each hologram contains six (6) images of NFTs from the extended Miladyverse, hypermixing them using lenticular technology.</span></div>
                 <div style={{ marginBottom: "1rem" }}><span style={{ fontWeight: "bold" }}>-Drip Mix: </span> <span>Randomized traits and characteristics are blended in holographic form creating never before seen aesthetic mashups.</span></div>
                 <div style={{ marginBottom: "1rem" }}><span style={{ fontWeight: "bold" }}>-Industrial Design: </span> <span>MiHolograms are long-lasting design objects made of an 8-inch x 10-inch Holographic Print affixed to a thermoplastic mounting plate.</span></div>
