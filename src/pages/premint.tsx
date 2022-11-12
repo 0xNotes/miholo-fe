@@ -50,7 +50,7 @@ export default function Home() {
                     topColor="#ffffff"
                     bottomText="180 collectible MiHolograms will be simultaneously released for .18 eth each on November, 25, 2022. Please check back on that date to secure your MiHologram before mint-out."
                     bottomColor="#f6cbcb"
-                    //subscribe={true}
+                    subscribe={true}
                     picture={false}
                 />}
 
@@ -76,10 +76,10 @@ export default function Home() {
 
             <div className="GifBlock">
                 <a href="https://www.phatmedia.co.uk/flyers/genre/early-rave?p=4"><img src={scientist} style={{ width: "10%" }} /></a>
-                <a href="https://i.imgur.com/Tl6IgaI.jpg"><<img src={dna} style={{ width: "10%" }} /></a>
-                <a href="https://archive.org/~brenton/petcities.html"><<img src={wings} style={{ width: "20%" }} /></a>
-                <a href="https://i.imgur.com/lQocYEP.png"><<img src={dna} style={{ width: "10%" }} /></a>
-                <a href="https://wearehostsformemes.com/"><<img src={scientist} style={{ width: "10%" }} /></a>
+                <a href="https://i.imgur.com/Tl6IgaI.jpg"><img src={dna} style={{ width: "10%" }} /></a>
+                <a href="https://archive.org/~brenton/petcities.html"><img src={wings} style={{ width: "20%" }} /></a>
+                <a href="https://i.imgur.com/lQocYEP.png"><img src={dna} style={{ width: "10%" }} /></a>
+                <a href="https://wearehostsformemes.com/"><img src={scientist} style={{ width: "10%" }} /></a>
             </div>
 
         </div>

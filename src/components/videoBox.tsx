@@ -1,4 +1,4 @@
-import vidTemp from "../assets/MHG_1.mp4"
+import vidTemp from "../assets/MHG_1.mp4";
 
 export default function VideoBox() {
     return(
