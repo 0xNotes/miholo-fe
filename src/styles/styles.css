@@ -11,6 +11,10 @@ body {
   font-family: Hiragino, sans-serif;
 }
 
+a{
+  color: pink;
+}
+
 .Container {
   width: 100%;
   display: flex;
@@ -26,12 +30,35 @@ body {
   align-items: flex-start;
 }
 
+.sideGif{
+  height: 100%;
+}
+
+.sideGif a img{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .sideGif {
+    display: none;
+  }
+  .ImgTextBlock {
+    width: 43em;
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+}
+
 .DetailsText {
   color: #ffffff;
   font-size: larger;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   max-width: 43em;
   margin: 3em 1em 3em 1em;
 }
@@ -59,13 +86,11 @@ body {
 }
 
 .TopBox {
-  padding: 0.1rem 1rem;
+  padding: 0.1rem .5rem;
 }
 
 .BottomBox {
-  padding: 0.5em;
-  padding-left: 2em;
-  padding-bottom: 1em;
+  padding: 0.5rem .5rem 1rem 1rem;
 }
 
 .SubscribeBox {
@@ -121,7 +146,7 @@ body {
 }
 
 .VideoContainer {
-  border: 2px solid #707070;
+  border: 1px solid #707070;
   padding: 5rem;
   display: flex;
   flex-direction: column;
