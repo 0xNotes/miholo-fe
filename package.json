@@ -27,7 +27,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy-production": "react-scripts build && scp -r ./build/* root@159.65.174.152:/var/www/mihologrammaker.net/html"
+    "deploy-production": "react-scripts build && scp -r ./build/* root@134.122.123.33:/var/www/mihologrammaker.net/html"
   },
   "eslintConfig": {
     "extends": [
