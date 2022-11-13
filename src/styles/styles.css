@@ -149,6 +149,8 @@ a {
   flex-direction: column;
   justify-content: center;
   margin-top: 2rem;
+  max-width: 80%;
+  height: auto;
 }
 
 .VideoBottom {
