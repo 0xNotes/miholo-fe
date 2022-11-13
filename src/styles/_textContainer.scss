@@ -4,22 +4,17 @@
     justify-content: center;
     flex-direction: column;
     color: $grey;
-    border: 2px solid $grey;
-    width: 55%;
+    border: 1px solid #f6cbcb;
+    max-width:  43em;
+    margin-left: 1em;
+    margin-right: 1em;
     font-size: larger;
 }
 
 .TopBox{
-    border-bottom: 2px solid $grey;
-    padding: 1rem;
-    padding-left: 1rem;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+    padding: 0.1rem .5rem;
 }
 
 .BottomBox{
-    padding: 1rem;
-    padding-left: 2rem;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
+    padding: 0.5rem .5rem 1rem 1rem;
 }
