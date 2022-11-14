@@ -47,6 +47,7 @@ export default function SubscribeBox() {
   
       console.log(JSON.stringify(data, null, 4));
       setSubscribeText("Subscribed!");
+      setSubscribeFlag(true);
       return data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -63,6 +64,7 @@ export default function SubscribeBox() {
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>({ resolver });
   const onSubmit = handleSubmit((data) => addEmail(data.Email));
   const [subscribeText, setSubscribeText] = useState("Subscribe");
+  const [subscribeFlag, setSubscribeFlag] = useState(false);
 
 
   //const onSubmit = handleSubmit((data) => console.log(data.Email));
@@ -73,7 +75,7 @@ export default function SubscribeBox() {
       <form onSubmit={onSubmit}>
         <input className="InputText" type="email" placeholder="your email..." {...register("Email", { required: true, pattern: /^\S+@\S+$/i })} />
 
-        <input className="SubmitButton" value={subscribeText} type="submit" />
+        <input className="SubmitButton" disabled={subscribeFlag} value={subscribeText} type="submit" />
       </form>
       {/* <div>
                 <input className="InputText" type="email" placeholder="your email..." name="name" />
