@@ -78,7 +78,7 @@ a {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  color: #707070;
+  color: #281030;
   border: 1px solid #f6cbcb;
   max-width: 43em;
   margin-left: 1em;
@@ -87,7 +87,8 @@ a {
 }
 
 .TopBox {
-  padding: 0.1rem 0.5rem;
+  padding: 0.25rem 0.5rem;
+  font-weight: bold;
 }
 
 .BottomBox {
@@ -119,14 +120,13 @@ a {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   justify-content: center;
-  color: #707070;
+  color: #281030;
   background-color: #f2e3e3;
   font-size: medium;
   font-weight: bold;
 }
 
 .CollectionText {
-  font-size: larger;
   font-weight: bold;
   margin-bottom: 0.75rem;
 }
@@ -146,7 +146,7 @@ a {
 }
 
 .VideoContainer {
-  border: 1px solid #707070;
+  border: 1px solid #281030;
   padding: 4rem;
   display: flex;
   flex-direction: column;
