@@ -35,7 +35,7 @@ export default function Home() {
                 </div>
             </div>
 
-            <audio controls>
+            <audio className="AudioFix" controls>
                 <source src={Aegean} type="audio/mpeg"/>
             </audio>
 
