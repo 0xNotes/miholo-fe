@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useForm, Resolver } from 'react-hook-form';
 import { useState } from 'react';
+import { WagmiConfig } from "wagmi";
 
 
 type EmailResponse = {
@@ -34,7 +35,7 @@ export default function SubscribeBox() {
     try {
       // 👇️ const data: CreateUserResponse
       const { data } = await axios.post<EmailResponse>(
-        'http://127.0.0.1:5000/add_email',
+        'https://sigil.systems/addEmail',
         { email: inputEmail },
         {
           headers: {
@@ -45,7 +46,7 @@ export default function SubscribeBox() {
       );
   
       console.log(JSON.stringify(data, null, 4));
-      setSubscribeText("Subscribed!")
+      setSubscribeText("Subscribed!");
       return data;
     } catch (error) {
       if (axios.isAxiosError(error)) {

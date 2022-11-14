@@ -1,11 +1,12 @@
 .VideoContainer{
     border: 1px solid $grey;
-    padding: 5rem;
+    padding: 4rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin-top: 2rem;
-    max-width: 80%;
+    width: 43em;
+    max-width: 70%;
     height: auto;
 }
 
@@ -15,3 +16,4 @@
     text-align: center;
     padding-top: 2rem;
 }
+

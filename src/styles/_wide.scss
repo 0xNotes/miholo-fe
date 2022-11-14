@@ -35,6 +35,7 @@ a {
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
+    //border: 1px solid salmon;
 }
 
 .DetailsText {
@@ -44,22 +45,23 @@ a {
     flex-direction: column;
     align-items: left;
     max-width: 43em;
-    width: 55%;
     margin: 3em 1em 3em 1em;
 }
 
 .GifBlock {
-    width: 80%;
+    max-width: 90%;
+    width: 100em;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     margin-top: 4rem;
     margin-bottom: 8rem;
+    flex-wrap: wrap;
 }
 
 .sideGif {
-    height: 100%;
+    //border: 1px solid salmon;
 }
 
 .sideGif a img {
@@ -67,16 +69,23 @@ a {
     margin-left: auto;
     margin-right: auto;
     height: 100%;
+    width: auto;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
     .sideGif {
       display: none;
     }
     .ImgTextBlock {
-      width: 43em;
       margin-left: 1em;
       margin-right: 1em;
     }
   }
   
+.Line{
+    width: "43em";
+    //@at-root: "70%";
+    border-bottom: "1px solid #ffffff";
+    margin-top: "5rem";
+    margin-bottom: "5rem";
+}

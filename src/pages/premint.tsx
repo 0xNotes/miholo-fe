@@ -16,10 +16,10 @@ export default function Home() {
 
     return (
         <div className="Container">
-            <img src={logo} style={{ marginTop: "4rem" }}></img>
+            <img src={logo} style={{ marginTop: "4rem", maxWidth: "90%" }}></img>
             <div className="ImgTextBlock">
                 <div className="sideGif">
-                <a href="https://www.sacred-texts.com/jud/doth/doth04.htm" target="_blank"><img src={pc} style={{ width: "10%", height: "10%", marginLeft: "4rem" }} ></img></a>
+                <a href="https://www.sacred-texts.com/jud/doth/doth04.htm" target="_blank"><img src={pc} style={{ width: "auto", maxHeight: "10rem", marginLeft: "4rem" }} ></img></a>
                 </div>    
                 <TextContainer
                     topText="Welcome to MiHolograms! 홀로그램에 오신 것을 환영합니다"
@@ -30,7 +30,7 @@ export default function Home() {
                     picture={false}
                 />
                 <div className="sideGif">
-                <a href="https://whatisnuclear.com/radiation-on-flights.html" target="_blank"><img src={pc} style={{ width: "10%", height: "10%", marginRight: "4rem" }} ></img></a>
+                <a href="https://whatisnuclear.com/radiation-on-flights.html" target="_blank"><img src={pc} style={{ width: "auto", maxHeight: "10rem", marginRight: "4rem" }} ></img></a>
                 </div>
             </div>
             <div className="DetailsText">
@@ -56,11 +56,11 @@ export default function Home() {
 
 
 
-            <div style={{ width: "43em", borderBottom: "1px solid #ffffff", marginTop: "5rem", marginBottom: "5rem" }} />
+            <div style={{ width: "43em", maxWidth: "70%", borderBottom: "1px solid #ffffff", marginTop: "5rem", marginBottom: "5rem" }} />
             
             <VideoBox />
 
-            <div style={{ width: "43em", borderBottom: "1px solid #ffffff", marginTop: "5rem", marginBottom: "5rem" }} />
+            <div style={{ width: "43em", maxWidth: "70%", borderBottom: "1px solid #ffffff", marginTop: "5rem", marginBottom: "5rem" }} />
 
             <TextContainer
                 topText="The Tribes of Milady Meet in the Holographic Realm"
@@ -75,11 +75,11 @@ export default function Home() {
 
 
             <div className="GifBlock">
-                <a href="https://www.phatmedia.co.uk/flyers/genre/early-rave?p=4"><img src={scientist} style={{ width: "10%" }} /></a>
-                <a href="https://i.imgur.com/Tl6IgaI.jpg"><img src={dna} style={{ width: "10%" }} /></a>
-                <a href="https://archive.org/~brenton/petcities.html"><img src={wings} style={{ width: "20%" }} /></a>
-                <a href="https://i.imgur.com/lQocYEP.png"><img src={dna} style={{ width: "10%" }} /></a>
-                <a href="https://wearehostsformemes.com/"><img src={scientist} style={{ width: "10%" }} /></a>
+                <a href="https://www.phatmedia.co.uk/flyers/genre/early-rave?p=4"><img src={scientist} style={{ width: "10rem" }} /></a>
+                <a href="https://i.imgur.com/Tl6IgaI.jpg"><img src={dna} style={{ width: "10rem" }} /></a>
+                <a href="https://archive.org/~brenton/petcities.html"><img src={wings} style={{ width: "20rem" }} /></a>
+                <a href="https://i.imgur.com/lQocYEP.png"><img src={dna} style={{ width: "10rem" }} /></a>
+                <a href="https://wearehostsformemes.com/"><img src={scientist} style={{ width: "10rem" }} /></a>
             </div>
 
         </div>

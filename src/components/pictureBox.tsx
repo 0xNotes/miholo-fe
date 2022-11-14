@@ -19,7 +19,7 @@ export default function PictureBox() {
             <PictureFrame collection="Pixelady" image={Pixelady}/>
             <PictureFrame collection="Bored Milady Maker" image={BoredMiladyMaker}/>
             <PictureFrame collection="Ghiblady Maker" image={Ghiblady}/>
-            <PictureFrame collection="Redacted Remilio Babies" image={Remi}/>
+            <PictureFrame collection="Remilio Babies" image={Remi}/>
             <PictureFrame collection="Anti-Miladies" image={AntiMilady}/>
             <PictureFrame collection="McLady Maker" image={McLady}/>
             <PictureFrame collection="Milady, That B.I.T.C.H" image={Bitch}/>
