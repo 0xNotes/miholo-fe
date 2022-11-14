@@ -74,6 +74,22 @@ a {
   margin-bottom: "5rem";
 }
 
+.SubmitButton {
+  display: flex;
+  width: 15.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  justify-content: center;
+  color: #281030;
+  background-color: #f2e3e3;
+  font-size: medium;
+  font-weight: bold;
+}
+
+input.SubmitButton:active {
+  background-color: #807fb3 !important;
+}
+
 .TextContainer {
   display: flex;
   justify-content: center;
