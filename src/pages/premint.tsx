@@ -8,6 +8,7 @@ import scientist from "../assets/scientist.gif";
 import wings from "../assets/wings.gif";
 import useCase from "../assets/use-cases.jpg";
 import ShippingBox from "../components/shippingBox";
+import Aegean from "../assets/Aegean_Sea.mp3";
 
 
 export default function Home() {
@@ -33,6 +34,11 @@ export default function Home() {
                 <a href="https://whatisnuclear.com/radiation-on-flights.html" target="_blank"><img src={pc} style={{ width: "auto", maxHeight: "10rem", marginRight: "4rem" }} ></img></a>
                 </div>
             </div>
+
+            <audio controls>
+                <source src={Aegean} type="audio/mpeg"/>
+            </audio>
+
             <div className="DetailsText">
                 <span style={{ textDecoration: "underline", fontWeight: "bold", marginBottom: "2rem", textAlign:"center" }}>Details</span>
                 <div style={{ marginBottom: "1rem" }}><span style={{ fontWeight: "bold" }}>-Loving Respect for the Miladyverse: </span> <span>Each hologram contains six (6) images of NFTs from the extended Miladyverse, hypermixing them using lenticular technology.</span></div>
