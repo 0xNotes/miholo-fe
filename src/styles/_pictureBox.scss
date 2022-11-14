@@ -5,3 +5,8 @@
     margin-top: 1rem;
     padding: 0.5rem;
 }
+
+.PictureBox div a {
+    color: $grey; /*if that's still the name of the main color var*/
+    text-decoration: none;
+}

@@ -14,15 +14,15 @@ import Remi from "../assets/rem_baby.jpg";
 export default function PictureBox() {
     return(
         <div className="PictureBox">
-            <PictureFrame collection="Milady Maker" image={Milady}/>
-            <PictureFrame collection="Milady Aura" image={Miaura}/>
-            <PictureFrame collection="Pixelady" image={Pixelady}/>
-            <PictureFrame collection="Bored Milady Maker" image={BoredMiladyMaker}/>
-            <PictureFrame collection="Ghiblady Maker" image={Ghiblady}/>
-            <PictureFrame collection="Remilio Babies" image={Remi}/>
-            <PictureFrame collection="Anti-Miladies" image={AntiMilady}/>
-            <PictureFrame collection="McLady Maker" image={McLady}/>
-            <PictureFrame collection="Milady, That B.I.T.C.H" image={Bitch}/>
+            <PictureFrame collection="Milady Maker" image={Milady} link={"https://miladymaker.net/"}/>
+            <PictureFrame collection="Milady Aura" image={Miaura} link={"https://opensea.io/collection/miladyaura"}/>
+            <PictureFrame collection="Pixelady" image={Pixelady} link={"https://pixeladymaker.net/"}/>
+            <PictureFrame collection="Bored Milady Maker" image={BoredMiladyMaker} link={"https://opensea.io/collection/boredmilady"}/>
+            <PictureFrame collection="Ghiblady Maker" image={Ghiblady} link={"https://www.ghibladymaker.net/"}/>
+            <PictureFrame collection="Remilio Babies" image={Remi} link={"https://www.scatter.art/collection/0xd3d9ddd0cf0a5f0bfb8f7fceae075df687eaebab?tab=mint"}/>
+            <PictureFrame collection="Anti-Miladies" image={AntiMilady} link={"https://opensea.io/collection/anti-miladies"}/>
+            <PictureFrame collection="McLady Maker" image={McLady} link={"https://opensea.io/collection/mclady-maker"}/>
+            <PictureFrame collection="Milady, That B.I.T.C.H" image={Bitch} link={"https://opensea.io/collection/miladybitch"}/>
             <div style={{width: "100%", paddingBottom: "1rem"}}>... and more!!!</div>
         </div>
 

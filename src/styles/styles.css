@@ -164,6 +164,11 @@ input.SubmitButton:active {
   padding: 0.5rem;
 }
 
+.PictureBox div a {
+  color: #281030; /*if that's still the name of the main color var*/
+  text-decoration: none;
+}
+
 .VideoContainer {
   border: 1px solid #281030;
   padding: 4rem;
