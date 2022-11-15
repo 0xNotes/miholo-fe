@@ -13,7 +13,7 @@ import Aegean from "../assets/Aegean_Sea.mp3";
 
 export default function Home() {
 
-    const shipping = false;
+    const shipping = true;
 
     return (
         <div className="Container">

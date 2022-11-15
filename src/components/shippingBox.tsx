@@ -2,7 +2,12 @@ import axios from "axios";
 import { useForm, Resolver } from 'react-hook-form';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import CustomConnect from "./customConnect";
-import { useAccount } from 'wagmi'
+import { useAccount, useContractRead, usePrepareSendTransaction, useSendTransaction } from 'wagmi';
+import MiHoloABI from "../assets/ABI.json";
+import { utils } from 'ethers'
+import { useState } from 'react';
+
+//0xBCd71c002e52861051389BC4eE2f2f033eD9eF41
 
 
 type ShippingResponse = {
@@ -61,12 +66,69 @@ export default function ShippingBox() {
     const num = 0;
     const { isConnected } = useAccount();
 
+    const contractRead = useContractRead({
+        address: '0xBCd71c002e52861051389BC4eE2f2f033eD9eF41',
+        abi: MiHoloABI,
+        functionName: 'sold',
+        chainId: 5,
+        watch: true
+      })
+
+    const prep1 = usePrepareSendTransaction({
+        request: {
+          to: "0xBCd71c002e52861051389BC4eE2f2f033eD9eF41",
+          value: utils.parseEther("0.18"),
+        },
+      })
+
+
+    
+    const prep3 = usePrepareSendTransaction({
+        request: {
+          to: "0xBCd71c002e52861051389BC4eE2f2f033eD9eF41",
+          value: utils.parseEther("0.18"),
+        },
+      })
+
+    
+    const prep10 = usePrepareSendTransaction({
+        request: {
+          to: "0xBCd71c002e52861051389BC4eE2f2f033eD9eF41",
+          value: utils.parseEther("0.18"),
+        },
+      })
+    const send1 = useSendTransaction(prep1.config);
+    const send3 = useSendTransaction(prep3.config);
+    const send10 = useSendTransaction(prep10.config);
+
+
 
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
-    const submit1 = handleSubmit((data) => console.log(data));
-    const submit2 = handleSubmit((data) => console.log(data));
-    const submit3 = handleSubmit((data) => console.log(data));
+    const [salesCount, setSalesCount] = useState(String(contractRead.data))
+    const submit1 = handleSubmit((data) => sell1(data));
+    const submit2 = handleSubmit((data) => sell3(data));
+    const submit3 = handleSubmit((data) => sell10(data));
 
+    function sell1(data: any){
+        //console.log(data);
+        send1.sendTransaction?.();
+        setSalesCount(String(contractRead.data));
+    }
+
+    function sell3(data: any){
+        //console.log(data);
+        send3.sendTransaction?.();
+        setSalesCount(String(contractRead.data));
+    }
+
+    function sell10(data: any){
+        //console.log(data);
+        send10.sendTransaction?.();
+        setSalesCount(String(contractRead.data));
+    }
+
+
+    
 
     return (
         <div className="TextContainer">
@@ -95,7 +157,7 @@ export default function ShippingBox() {
                         </div>
                         <div style={{ borderBottom: "1px solid #707070", marginBottom: "1rem", width: "100%" }} />
                         <div>MiHolograms are now Minting!!!</div>
-                        <div>MiHolograms Minted: <span style={{ fontWeight: "bold"}}>{num} / 180</span></div>
+                        <div>MiHolograms Minted: <span style={{ fontWeight: "bold"}}>{String(contractRead.data)} / 180</span></div>
                         {!isConnected ?
                         <div className="ButtonCenter">
                             <CustomConnect />
