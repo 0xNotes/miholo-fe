@@ -32,12 +32,12 @@ type FormValues = {
 
 
 
-async function addShipping(inputName: string, inputAddress1: string, inputAddress2: string, inputCity: string, inputState: string, inputZip: string, inputCountry: string) {
+async function addShipping(inputName: string, inputAddress1: string, inputAddress2: string, inputCity: string, inputState: string, inputZip: string, inputCountry: string, inputQty: number) {
     try {
         // 👇️ const data: CreateUserResponse
         const { data } = await axios.post<ShippingResponse>(
-            'http://127.0.0.1:5000/add_shipping',
-            { name: inputName, address_line_1: inputAddress1, address_line_2: inputAddress2, city_state_zip: inputCity, inputState, inputZip, country: inputCountry },
+            'https://sigil.systems/add_shipping',
+            { name: inputName, address_line_1: inputAddress1, address_line_2: inputAddress2, city: inputCity, state: inputState, zip: inputZip, country: inputCountry, qty: inputQty },
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ export default function ShippingBox() {
     const { isConnected } = useAccount();
 
     const contractRead = useContractRead({
-        address: '0xBCd71c002e52861051389BC4eE2f2f033eD9eF41',
+        address: '0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d',
         abi: MiHoloABI,
         functionName: 'sold',
         chainId: 5,
@@ -76,24 +76,30 @@ export default function ShippingBox() {
 
     const prep1 = usePrepareSendTransaction({
         request: {
-          to: "0xBCd71c002e52861051389BC4eE2f2f033eD9eF41",
+          to: "0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d",
           value: utils.parseEther("0.18"),
         },
+        onSuccess(data) {
+            console.log('Settled', data)
+          },     
       })
 
 
     
     const prep3 = usePrepareSendTransaction({
         request: {
-          to: "0xBCd71c002e52861051389BC4eE2f2f033eD9eF41",
+          to: "0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d",
           value: utils.parseEther("0.18"),
         },
+        onSuccess(data) {
+            console.log('Settled', data)
+          },
       })
 
     
     const prep10 = usePrepareSendTransaction({
         request: {
-          to: "0xBCd71c002e52861051389BC4eE2f2f033eD9eF41",
+          to: "0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d",
           value: utils.parseEther("0.18"),
         },
       })
@@ -111,18 +117,21 @@ export default function ShippingBox() {
 
     function sell1(data: any){
         //console.log(data);
+        addShipping(data.name, data.address_line_1, data.address_line_2, data.city, data.state, data.zip, data.country, 1);
         send1.sendTransaction?.();
         setSalesCount(String(contractRead.data));
     }
 
     function sell3(data: any){
         //console.log(data);
+        addShipping(data.name, data.address_line_1, data.address_line_2, data.city, data.state, data.zip, data.country, 3);
         send3.sendTransaction?.();
         setSalesCount(String(contractRead.data));
     }
 
     function sell10(data: any){
         //console.log(data);
+        addShipping(data.name, data.address_line_1, data.address_line_2, data.city, data.state, data.zip, data.country, 10);
         send10.sendTransaction?.();
         setSalesCount(String(contractRead.data));
     }
