@@ -14,7 +14,7 @@ import Aegean from "../assets/Aegean_Sea.mp3";
 export default function Home() {
 
     const shipping = false;
-
+    
     return (
         <div className="Container">
             <img src={logo} style={{ marginTop: "4rem", maxWidth: "95%" }}></img>

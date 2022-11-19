@@ -158,8 +158,6 @@ input.SubmitButton:active {
 }
 
 .VideoContainer {
-  border: 1px solid #281030;
-  padding: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -191,6 +189,14 @@ input.SubmitButton:active {
   border: 2px solid black;
 }
 
+.ShippingInputTextError {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: medium;
+  border: 2px solid red;
+}
+
 .ShippingForm {
   display: flex;
   flex-direction: column;
@@ -199,9 +205,14 @@ input.SubmitButton:active {
   margin-top: 0.75rem;
 }
 
+@media only screen and (max-width: 900px) {
+  .ShippingForm {
+    margin-left: 0rem;
+    margin-right: 0rem;
+  }
+}
 .ShipingFormBottom {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 1rem;
 }/*# sourceMappingURL=styles.css.map */

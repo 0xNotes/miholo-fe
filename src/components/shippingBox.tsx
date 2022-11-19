@@ -18,6 +18,7 @@ type ShippingResponse = {
     state: string;
     zip: string;
     country: string;
+    email: string;
 }
 
 type FormValues = {
@@ -28,6 +29,7 @@ type FormValues = {
     state: string;
     zip: string;
     country: string;
+    email: string;
 };
 
 
@@ -80,16 +82,15 @@ export default function ShippingBox() {
           value: utils.parseEther("0.18"),
         },
         onSuccess(data) {
+            //addEmail(name);
             console.log('Settled', data)
           },     
       })
 
-
-    
     const prep3 = usePrepareSendTransaction({
         request: {
           to: "0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d",
-          value: utils.parseEther("0.18"),
+          value: utils.parseEther("0.5"),
         },
         onSuccess(data) {
             console.log('Settled', data)
@@ -100,7 +101,7 @@ export default function ShippingBox() {
     const prep10 = usePrepareSendTransaction({
         request: {
           to: "0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d",
-          value: utils.parseEther("0.18"),
+          value: utils.parseEther("1.5"),
         },
       })
     const send1 = useSendTransaction(prep1.config);
@@ -111,6 +112,8 @@ export default function ShippingBox() {
 
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
     const [salesCount, setSalesCount] = useState(String(contractRead.data))
+    const [name, setName] = useState("");
+
     const submit1 = handleSubmit((data) => sell1(data));
     const submit2 = handleSubmit((data) => sell3(data));
     const submit3 = handleSubmit((data) => sell10(data));
@@ -154,15 +157,17 @@ export default function ShippingBox() {
                     </div>
                     <form>
                         <div className="ShippingForm">
-                            <input className="ShippingInputText" type="text" placeholder="Name" {...register("name", { required: true })} />
-                            <input className="ShippingInputText" type="text" placeholder="Address Line 1" {...register("address_line_1", { required: true })} />
+                            <input className="ShippingInputText" id="nameForm" type="text" placeholder="Name*" {...register("name", { required: "This Field is Required" })} />
+                            <input className="ShippingInputText" type="text" placeholder="Address Line 1*" {...register("address_line_1", { required: true })} />
                             <input className="ShippingInputText" type="text" placeholder="Address Line 2" {...register("address_line_2", { required: false })} />
                             <div className="ShipingFormBottom">
-                                <input className="ShippingInputText" style={{ width: "25%" }} type="text" placeholder="City"  {...register("city", { required: true })} />
-                                <input className="ShippingInputText" style={{ width: "25%" }} type="text" placeholder="State" {...register("state", { required: true })} />
-                                <input className="ShippingInputText" style={{ width: "20%" }} type="text" placeholder="Zip" {...register("zip", { required: true })} />
-                                <input className="ShippingInputText" style={{ width: "20%" }} type="text" placeholder="Country" {...register("country", { required: true })} />
+                                <input className="ShippingInputText" style={{ width: "25%" }} type="text" placeholder="City*"  {...register("city", { required: true })} />
+                                <input className="ShippingInputText" style={{ width: "25%" }} type="text" placeholder="State*" {...register("state", { required: true })} />
+                                <input className="ShippingInputText" style={{ width: "20%" }} type="text" placeholder="Zip*" {...register("zip", { required: true })} />
+                                <input className="ShippingInputText" style={{ width: "20%" }} type="text" placeholder="Country*" {...register("country", { required: true })} />
                             </div>
+                            <input className="ShippingInputText" style={{marginBottom: "2rem"}} type="text" placeholder="Email (optional, used for contact)" {...register("email", { required: false })} />
+
                         </div>
                         <div style={{ borderBottom: "1px solid #707070", marginBottom: "1rem", width: "100%" }} />
                         <div>MiHolograms are now Minting!!!</div>
