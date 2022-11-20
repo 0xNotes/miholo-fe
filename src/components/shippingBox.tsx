@@ -18,6 +18,8 @@ type ShippingResponse = {
     state: string;
     zip: string;
     country: string;
+    qty: number;
+    txn: string;
     email: string;
 }
 
@@ -34,12 +36,41 @@ type FormValues = {
 
 
 
-async function addShipping(inputName: string, inputAddress1: string, inputAddress2: string, inputCity: string, inputState: string, inputZip: string, inputCountry: string, inputQty: number) {
+// async function addShipping(inputName: string, inputAddress1: string, inputAddress2: string, inputCity: string, inputState: string, inputZip: string, inputCountry: string, inputQty: number) {
+//     try {
+//         // 👇️ const data: CreateUserResponse
+//         const { data } = await axios.post<ShippingResponse>(
+//             'https://sigil.systems/add_shipping',
+//             { name: inputName, address_line_1: inputAddress1, address_line_2: inputAddress2, city: inputCity, state: inputState, zip: inputZip, country: inputCountry, qty: inputQty },
+//             {
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                     Accept: 'application/json',
+//                 },
+//             },
+//         );
+
+//         console.log(JSON.stringify(data, null, 4));
+
+//         return data;
+//     } catch (error) {
+//         if (axios.isAxiosError(error)) {
+//             console.log('error message: ', error.message);
+//             // 👇️ error: AxiosError<any, any>
+//             return error.message;
+//         } else {
+//             console.log('unexpected error: ', error);
+//             return 'An unexpected error occurred';
+//         }
+//     }
+// }
+
+async function addShipping(inputName: string, inputAddress1: string, inputAddress2: string, inputCity: string, inputState: string, inputZip: string, inputCountry: string, inputQty: number, inputTxn: string, inputEmail: string) {
     try {
         // 👇️ const data: CreateUserResponse
         const { data } = await axios.post<ShippingResponse>(
-            'https://sigil.systems/add_shipping',
-            { name: inputName, address_line_1: inputAddress1, address_line_2: inputAddress2, city: inputCity, state: inputState, zip: inputZip, country: inputCountry, qty: inputQty },
+            'http://localhost:3000/addShipping',
+            { name: inputName, address_line_1: inputAddress1, address_line_2: inputAddress2, city: inputCity, state: inputState, zip: inputZip, country: inputCountry, qty: inputQty, txn: inputTxn, email: inputEmail },
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -63,7 +94,6 @@ async function addShipping(inputName: string, inputAddress1: string, inputAddres
     }
 }
 
-
 export default function ShippingBox() {
     const num = 0;
     const { isConnected } = useAccount();
@@ -81,9 +111,12 @@ export default function ShippingBox() {
           to: "0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d",
           value: utils.parseEther("0.18"),
         },
-        onSuccess(data) {
-            //addEmail(name);
-            console.log('Settled', data)
+        onSettled(data) {
+            console.log('Success', data)
+            console.log("SENDING SHIPPING", name, address_line_1, address_line_2, city, state, zip, country, email)
+            addShipping(name, address_line_1, address_line_2, city, state, zip, country, 1, "FIGURE OUT", email);
+            console.log("SHIPPING SENT");
+            //console.log('Success', data)
           },     
       })
 
@@ -113,28 +146,43 @@ export default function ShippingBox() {
     const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
     const [salesCount, setSalesCount] = useState(String(contractRead.data))
     const [name, setName] = useState("");
+    const [address_line_1, setAddress1] = useState("");
+    const [address_line_2, setAddress2] = useState("");
+    const [city, setCity] = useState("");
+    const [state, setState] = useState("");
+    const [zip, setZip] = useState("");
+    const [country, setCountry] = useState("");
+    const [email, setEmail] = useState("");
+
 
     const submit1 = handleSubmit((data) => sell1(data));
-    const submit2 = handleSubmit((data) => sell3(data));
-    const submit3 = handleSubmit((data) => sell10(data));
+    //const submit2 = handleSubmit((data) => sell3(data));
+    //const submit3 = handleSubmit((data) => sell10(data));
 
     function sell1(data: any){
         //console.log(data);
-        addShipping(data.name, data.address_line_1, data.address_line_2, data.city, data.state, data.zip, data.country, 1);
+        setName(data.name);
+        setAddress1(data.address_line_1);
+        setAddress2(data.address_line_2);
+        setCity(data.city);
+        setState(data.state);
+        setZip(data.zip);
+        setCountry(data.country);
+        setEmail(data.email);
         send1.sendTransaction?.();
         setSalesCount(String(contractRead.data));
     }
 
     function sell3(data: any){
         //console.log(data);
-        addShipping(data.name, data.address_line_1, data.address_line_2, data.city, data.state, data.zip, data.country, 3);
+        //addShipping(data.name, data.address_line_1, data.address_line_2, data.city, data.state, data.zip, data.country, 3);
         send3.sendTransaction?.();
         setSalesCount(String(contractRead.data));
     }
 
     function sell10(data: any){
         //console.log(data);
-        addShipping(data.name, data.address_line_1, data.address_line_2, data.city, data.state, data.zip, data.country, 10);
+        //addShipping(data.name, data.address_line_1, data.address_line_2, data.city, data.state, data.zip, data.country, 10);
         send10.sendTransaction?.();
         setSalesCount(String(contractRead.data));
     }
@@ -179,8 +227,8 @@ export default function ShippingBox() {
                         :
                         <div className="ButtonCenter">
                             <button className="SubmitButton" onClick={submit1} style={{ marginTop: "1rem", marginBottom: "0.25rem" }}>Mint 1 for .18 ETH</button>
-                            <button className="SubmitButton" onClick={submit2} style={{ marginBottom: "0.25rem" }}>Mint 3 for .5 ETH</button>
-                            <button className="SubmitButton" onClick={submit3} style={{ marginBottom: "1.5rem" }}>Mint 10 for 1.5 ETH</button>
+                            {/* <button className="SubmitButton" onClick={submit2} style={{ marginBottom: "0.25rem" }}>Mint 3 for .5 ETH</button>
+                            <button className="SubmitButton" onClick={submit3} style={{ marginBottom: "1.5rem" }}>Mint 10 for 1.5 ETH</button> */}
                         </div>}
 
                     </form>

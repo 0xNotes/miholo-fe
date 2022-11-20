@@ -25,7 +25,7 @@ export default function Home() {
                 <TextContainer
                     topText="Welcome to MiHolograms! 홀로그램에 오신 것을 환영합니다"
                     topColor="#f6cbcb"
-                    bottomText="MiHolograms are 1/1 collectible holographic design objects in a neochibi style. Only 180 MiHolograms will be released, dropping Nov. 25."
+                    bottomText="MiHolograms are 1/1 collectible holographic design objects in a neochibi style. Only 180 MiHolograms will be released, dropping Nov. 25 for .18 ETH each."
                     bottomColor="#ffffff"
                     subscribe={false}
                     picture={false}
