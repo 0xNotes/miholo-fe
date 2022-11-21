@@ -94,6 +94,35 @@ async function addShipping(inputName: string, inputAddress1: string, inputAddres
     }
 }
 
+async function addPreShipping(inputName: string, inputAddress1: string, inputAddress2: string, inputCity: string, inputState: string, inputZip: string, inputCountry: string, inputQty: number, inputEmail: string, inputTxn?: any,) {
+    try {
+        // 👇️ const data: CreateUserResponse
+        const { data } = await axios.post<ShippingResponse>(
+            'http://localhost:3000/addPreShipping',
+            { name: inputName, address_line_1: inputAddress1, address_line_2: inputAddress2, city: inputCity, state: inputState, zip: inputZip, country: inputCountry, qty: inputQty, txn: inputTxn, email: inputEmail },
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                },
+            },
+        );
+
+        console.log(JSON.stringify(data, null, 4));
+
+        return data;
+    } catch (error) {
+        if (axios.isAxiosError(error)) {
+            console.log('error message: ', error.message);
+            // 👇️ error: AxiosError<any, any>
+            return error.message;
+        } else {
+            console.log('unexpected error: ', error);
+            return 'An unexpected error occurred';
+        }
+    }
+}
+
 export default function ShippingBox() {
     const num = 0;
     const { isConnected } = useAccount();
@@ -139,28 +168,28 @@ export default function ShippingBox() {
     const send1 = useSendTransaction({
         ...prep1.config,
         onSuccess() {
-            console.log(getValues("name"));
-            setName(getValues("name"))
-            console.log(name);
-        }
+            const hash = String(send1.data?.hash);
+            addShipping(getValues("name"), getValues("address_line_1"), getValues("address_line_2"), getValues("city")
+                , getValues("state"), getValues("zip"), getValues("country"), 1, getValues("email"), hash);    
+        }    
     });
 
 
     const send3 = useSendTransaction({
         ...prep3.config,
         onSuccess() {
-            console.log(getValues("name"));
-            setName(getValues("name"))
-            console.log(name);
+            const hash = String(send1.data?.hash);
+            addShipping(getValues("name"), getValues("address_line_1"), getValues("address_line_2"), getValues("city")
+                , getValues("state"), getValues("zip"), getValues("country"), 3, getValues("email"), hash);    
         }
     });
 
     const send10 = useSendTransaction({
         ...prep10.config,
         onSuccess() {
-            console.log(getValues("name"));
-            setName(getValues("name"))
-            console.log(name);
+            const hash = String(send1.data?.hash);
+            addShipping(getValues("name"), getValues("address_line_1"), getValues("address_line_2"), getValues("city")
+                , getValues("state"), getValues("zip"), getValues("country"), 10, getValues("email"), hash);    
         }
     });
 
@@ -225,7 +254,9 @@ export default function ShippingBox() {
                     <form>
                         <div className="ShippingForm">
                             <input className="ShippingInputText" id="nameForm" type="text" placeholder="Name*" {...register("name", { required: "This Field is Required" })} />
+                            {errors.name?.type === 'required' && <div className="ErrorText">Name is required</div>}
                             <input className="ShippingInputText" type="text" placeholder="Address Line 1*" {...register("address_line_1", { required: true })} />
+                            {errors.address_line_1?.type === 'required' && <div className="ErrorText">Address Line 1 is required</div>}
                             <input className="ShippingInputText" type="text" placeholder="Address Line 2" {...register("address_line_2", { required: false })} />
                             <div className="ShipingFormBottom">
                                 <input className="ShippingInputText" style={{ width: "25%" }} type="text" placeholder="City*"  {...register("city", { required: true })} />
@@ -233,6 +264,11 @@ export default function ShippingBox() {
                                 <input className="ShippingInputText" style={{ width: "20%" }} type="text" placeholder="Zip*" {...register("zip", { required: true })} />
                                 <input className="ShippingInputText" style={{ width: "20%" }} type="text" placeholder="Country*" {...register("country", { required: true })} />
                             </div>
+                            {errors.city?.type === 'required' && <div className="ErrorText">City is required</div>}
+                            {errors.state?.type === 'required' && <div className="ErrorText">State is required</div>}
+                            {errors.zip?.type === 'required' && <div className="ErrorText">Zip is required</div>}
+                            {errors.country?.type === 'required' && <div className="ErrorText">Country is required</div>}
+
                             <input className="ShippingInputText" style={{ marginBottom: "2rem" }} type="email" placeholder="Email (optional, used for contact)" {...register("email", { required: false })} />
 
                         </div>
