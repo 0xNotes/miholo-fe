@@ -251,6 +251,7 @@ export default function ShippingBox() {
                             </div>}
 
                     </form>
+                    <div style={{textAlign: "center"}}>Please leave this page open for up to two minutes after signing while the transaction completes.</div>
                 </div>
                 <div>
                 </div>
