@@ -2,7 +2,7 @@ import axios from "axios";
 import { useForm, Resolver } from 'react-hook-form';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import CustomConnect from "./customConnect";
-import { useAccount, useContractRead, usePrepareSendTransaction, useSendTransaction } from 'wagmi';
+import { useAccount, useContractRead, usePrepareSendTransaction, useSendTransaction, useWaitForTransaction } from 'wagmi';
 import MiHoloABI from "../assets/ABI.json";
 import { utils } from 'ethers'
 import { useState } from 'react';
@@ -65,7 +65,7 @@ type FormValues = {
 //     }
 // }
 
-async function addShipping(inputName: string, inputAddress1: string, inputAddress2: string, inputCity: string, inputState: string, inputZip: string, inputCountry: string, inputQty: number, inputTxn: string, inputEmail: string) {
+async function addShipping(inputName: string, inputAddress1: string, inputAddress2: string, inputCity: string, inputState: string, inputZip: string, inputCountry: string, inputQty: number, inputEmail: string, inputTxn?: any,) {
     try {
         // 👇️ const data: CreateUserResponse
         const { data } = await axios.post<ShippingResponse>(
@@ -97,6 +97,12 @@ async function addShipping(inputName: string, inputAddress1: string, inputAddres
 export default function ShippingBox() {
     const num = 0;
     const { isConnected } = useAccount();
+    const { register, handleSubmit, getValues, formState: { errors } } = useForm<FormValues>();
+    const submit1 = handleSubmit((data) => sell1(data));
+    //const submit2 = handleSubmit((data) => sell3(data));
+    //const submit3 = handleSubmit((data) => sell10(data));
+
+    const [name, setName] = useState("");
 
     const contractRead = useContractRead({
         address: '0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d',
@@ -106,84 +112,69 @@ export default function ShippingBox() {
         watch: true
       })
 
+    const [salesCount, setSalesCount] = useState(String(contractRead.data))
+
     const prep1 = usePrepareSendTransaction({
         request: {
           to: "0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d",
-          value: utils.parseEther("0.18"),
+          value: utils.parseEther('0.18'),
         },
-        onSettled(data) {
-            console.log('Success', data)
-            console.log("SENDING SHIPPING", name, address_line_1, address_line_2, city, state, zip, country, email)
-            addShipping(name, address_line_1, address_line_2, city, state, zip, country, 1, "FIGURE OUT", email);
-            console.log("SHIPPING SENT");
-            //console.log('Success', data)
-          },     
       })
 
-    const prep3 = usePrepareSendTransaction({
-        request: {
-          to: "0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d",
-          value: utils.parseEther("0.5"),
-        },
-        onSuccess(data) {
-            console.log('Settled', data)
-          },
-      })
+    // const prep3 = usePrepareSendTransaction({
+    //     request: {
+    //       to: "0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d",
+    //       value: utils.parseEther("0.5"),
+    //     },
+    //   })
 
     
-    const prep10 = usePrepareSendTransaction({
-        request: {
-          to: "0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d",
-          value: utils.parseEther("1.5"),
-        },
-      })
-    const send1 = useSendTransaction(prep1.config);
-    const send3 = useSendTransaction(prep3.config);
-    const send10 = useSendTransaction(prep10.config);
+    // const prep10 = usePrepareSendTransaction({
+    //     request: {
+    //       to: "0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d",
+    //       value: utils.parseEther("1.5"),
+    //     },
+    //   })
 
+    const send1 = useSendTransaction({
+        ...prep1.config,
+        onSuccess(){
+            console.log(getValues("name"));
+            setName(getValues("name"))
+            console.log(name);
+        }
+    });
 
-
-    const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
-    const [salesCount, setSalesCount] = useState(String(contractRead.data))
-    const [name, setName] = useState("");
-    const [address_line_1, setAddress1] = useState("");
-    const [address_line_2, setAddress2] = useState("");
-    const [city, setCity] = useState("");
-    const [state, setState] = useState("");
-    const [zip, setZip] = useState("");
-    const [country, setCountry] = useState("");
-    const [email, setEmail] = useState("");
-
-
-    const submit1 = handleSubmit((data) => sell1(data));
-    //const submit2 = handleSubmit((data) => sell3(data));
-    //const submit3 = handleSubmit((data) => sell10(data));
-
-    function sell1(data: any){
-        //console.log(data);
-        setName(data.name);
-        setAddress1(data.address_line_1);
-        setAddress2(data.address_line_2);
-        setCity(data.city);
-        setState(data.state);
-        setZip(data.zip);
-        setCountry(data.country);
-        setEmail(data.email);
+    function sell1(data : any){
         send1.sendTransaction?.();
         setSalesCount(String(contractRead.data));
     }
 
+    const waitForTransaction = useWaitForTransaction({
+        wait: send1.data?.wait,
+        hash: send1.data?.hash,
+        onSuccess(data){
+            const hash = String(send1.data?.hash);
+            addShipping(getValues("name"), getValues("address_line_1"), getValues("address_line_2"), getValues("city")
+            , getValues("state"), getValues("zip"), getValues("country"), 1, getValues("email"), hash);
+        }
+      })
+
+
+    // const send3 = useSendTransaction(prep3.config);
+    // const send10 = useSendTransaction(prep10.config);
+
     function sell3(data: any){
         //console.log(data);
         //addShipping(data.name, data.address_line_1, data.address_line_2, data.city, data.state, data.zip, data.country, 3);
-        send3.sendTransaction?.();
+        //send3.sendTransaction?.();
         setSalesCount(String(contractRead.data));
     }
 
     function sell10(data: any){
         //console.log(data);
         //addShipping(data.name, data.address_line_1, data.address_line_2, data.city, data.state, data.zip, data.country, 10);
-        send10.sendTransaction?.();
+        //send10.sendTransaction?.();
         setSalesCount(String(contractRead.data));
     }
 
@@ -214,7 +205,7 @@ export default function ShippingBox() {
                                 <input className="ShippingInputText" style={{ width: "20%" }} type="text" placeholder="Zip*" {...register("zip", { required: true })} />
                                 <input className="ShippingInputText" style={{ width: "20%" }} type="text" placeholder="Country*" {...register("country", { required: true })} />
                             </div>
-                            <input className="ShippingInputText" style={{marginBottom: "2rem"}} type="text" placeholder="Email (optional, used for contact)" {...register("email", { required: false })} />
+                            <input className="ShippingInputText" style={{marginBottom: "2rem"}} type="email" placeholder="Email (optional, used for contact)" {...register("email", { required: false })} />
 
                         </div>
                         <div style={{ borderBottom: "1px solid #707070", marginBottom: "1rem", width: "100%" }} />
