@@ -97,12 +97,12 @@ export default function ShippingBox() {
     const num = 0;
     const { isConnected } = useAccount();
     const { register, handleSubmit, getValues, formState: { errors } } = useForm<FormValues>();
-    const contractAddress = "0xF5060182d45260FD72dd52cf79abB3BE4C4f8d01";
+    const contractAddress = "0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d";
     const submit1 = handleSubmit((data) => sell1(data));
     const submit2 = handleSubmit((data) => sell3(data));
     const submit3 = handleSubmit((data) => sell10(data));
+    const [userMsg, setUserMsg] = useState("Please leave this page open until the transaction completes.");
 
-    const [name, setName] = useState("");
 
     const contractRead = useContractRead({
         address: contractAddress,
@@ -141,8 +141,9 @@ export default function ShippingBox() {
         onSuccess() {
             const hash = String(send1.data?.hash);
             addPreShipping(getValues("name"), getValues("address_line_1"), getValues("address_line_2"), getValues("city")
-                , getValues("state"), getValues("zip"), getValues("country"), 1, getValues("email"), hash);    
-        }    
+                , getValues("state"), getValues("zip"), getValues("country"), 1, getValues("email"), hash);
+            setUserMsg("Sending Transaction... Please keep this page open.");
+        }
     });
 
 
@@ -151,8 +152,9 @@ export default function ShippingBox() {
         onSuccess() {
             const hash = String(send1.data?.hash);
             addPreShipping(getValues("name"), getValues("address_line_1"), getValues("address_line_2"), getValues("city")
-                , getValues("state"), getValues("zip"), getValues("country"), 3, getValues("email"), hash);    
-        }
+                , getValues("state"), getValues("zip"), getValues("country"), 3, getValues("email"), hash);
+            setUserMsg("Sending Transaction... Please keep this page open.");
+        },
     });
 
     const send10 = useSendTransaction({
@@ -160,21 +162,31 @@ export default function ShippingBox() {
         onSuccess() {
             const hash = String(send1.data?.hash);
             addPreShipping(getValues("name"), getValues("address_line_1"), getValues("address_line_2"), getValues("city")
-                , getValues("state"), getValues("zip"), getValues("country"), 10, getValues("email"), hash);    
+                , getValues("state"), getValues("zip"), getValues("country"), 10, getValues("email"), hash);
+            setUserMsg("Sending Transaction... Please keep this page open.");
         }
     });
 
     function sell1(data: any) {
+        if(prep1.error){
+            setUserMsg("Insufficient Funds!");
+        }
         send1.sendTransaction?.();
         setSalesCount(String(contractRead.data));
     }
 
     function sell3(data: any) {
+        if(prep3.error){
+            setUserMsg("Insufficient Funds!");
+        }
         send3.sendTransaction?.();
         setSalesCount(String(contractRead.data));
     }
 
     function sell10(data: any) {
+        if(prep10.error){
+            setUserMsg("Insufficient Funds!");
+        }
         send10.sendTransaction?.();
         setSalesCount(String(contractRead.data));
     }
@@ -186,6 +198,7 @@ export default function ShippingBox() {
             const hash = String(send1.data?.hash);
             addShipping(getValues("name"), getValues("address_line_1"), getValues("address_line_2"), getValues("city")
                 , getValues("state"), getValues("zip"), getValues("country"), 1, getValues("email"), hash);
+            setUserMsg("Transaction Complete!");
         }
     })
 
@@ -196,6 +209,8 @@ export default function ShippingBox() {
             const hash = String(send1.data?.hash);
             addShipping(getValues("name"), getValues("address_line_1"), getValues("address_line_2"), getValues("city")
                 , getValues("state"), getValues("zip"), getValues("country"), 3, getValues("email"), hash);
+            setUserMsg("Transaction Complete!");
+
         }
     })
 
@@ -206,6 +221,8 @@ export default function ShippingBox() {
             const hash = String(send1.data?.hash);
             addShipping(getValues("name"), getValues("address_line_1"), getValues("address_line_2"), getValues("city")
                 , getValues("state"), getValues("zip"), getValues("country"), 10, getValues("email"), hash);
+            setUserMsg("Transaction Complete!");
+
         }
     })
 
@@ -258,7 +275,7 @@ export default function ShippingBox() {
                             </div>}
 
                     </form>
-                    <div style={{textAlign: "center", marginBottom: "1rem"}}>Please leave this page open for up to two minutes after signing while the transaction completes.</div>
+                    <div style={{ textAlign: "center", marginBottom: "1rem" }}>{userMsg}</div>
                 </div>
                 <div>
                 </div>
