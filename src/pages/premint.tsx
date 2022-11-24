@@ -75,7 +75,7 @@ export default function Home() {
             <TextContainer
                 topText="The Tribes of Milady Meet in the Holographic Realm"
                 topColor="#f6cbcb"
-                bottomText="MiHolograms are generated from a mix of Milady and Milady derivatives, carefully curated to represent network spirituality. Rare MiHolgrams include memes made by the community and synchronous trait overlaps. We are thankful for the artistic contributions of the following communities, whose images are all included in MiHolograms:"
+                bottomText="MiHolograms are generated from a mix of Milady and Milady derivatives, carefully curated to represent network spirituality. Rare MiHolograms include memes made by the community and synchronous trait overlaps. We are thankful for the artistic contributions of the following communities, whose images are all included in MiHolograms:"
                 bottomColor="#ffffff"
                 subscribe={false}
                 picture={true}
