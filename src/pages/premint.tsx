@@ -9,7 +9,7 @@ import wings from "../assets/wings.gif";
 import useCase from "../assets/use-cases.jpg";
 import ShippingBox from "../components/shippingBox";
 import Aegean from "../assets/Aegean_Sea.mp3";
-
+import Header from "../assets/header.jpg";
 
 export default function Home() {
 
@@ -20,8 +20,8 @@ export default function Home() {
             <img src={logo} style={{ marginTop: "1rem", maxWidth: "95%" }}></img>
             <div className="ImgTextBlock">
                 <div className="sideGif">
-                <a href="https://www.sacred-texts.com/jud/doth/doth04.htm" target="_blank"><img src={pc} style={{ width: "auto", maxHeight: "10rem", marginLeft: "4rem" }} ></img></a>
-                </div>    
+                    <a href="https://www.sacred-texts.com/jud/doth/doth04.htm" target="_blank"><img src={pc} style={{ width: "auto", maxHeight: "10rem", marginLeft: "4rem" }} ></img></a>
+                </div>
                 <TextContainer
                     topText="Welcome to MiHolograms! 홀로그램에 오신 것을 환영합니다"
                     topColor="#f6cbcb"
@@ -31,16 +31,18 @@ export default function Home() {
                     picture={false}
                 />
                 <div className="sideGif">
-                <a href="https://whatisnuclear.com/radiation-on-flights.html" target="_blank"><img src={pc} style={{ width: "auto", maxHeight: "10rem", marginRight: "4rem" }} ></img></a>
+                    <a href="https://whatisnuclear.com/radiation-on-flights.html" target="_blank"><img src={pc} style={{ width: "auto", maxHeight: "10rem", marginRight: "4rem" }} ></img></a>
                 </div>
             </div>
 
+
             <audio className="AudioFix" controls controlsList="nodownload">
-                <source src={Aegean} type="audio/mpeg"/>
+                <source src={Aegean} type="audio/mpeg" />
             </audio>
 
+
             <div className="DetailsText">
-                <span style={{ textDecoration: "underline", fontWeight: "bold", marginBottom: "2rem", textAlign:"center" }}>Details</span>
+                <span style={{ textDecoration: "underline", fontWeight: "bold", marginBottom: "2rem", textAlign: "center" }}>Details</span>
                 <div style={{ marginBottom: "1rem" }}><span style={{ fontWeight: "bold" }}>-Loving Respect for the Miladyverse: </span> <span>Each hologram contains six (6) images of NFTs from the extended Miladyverse, hypermixing them using lenticular technology.</span></div>
                 <div style={{ marginBottom: "1rem" }}><span style={{ fontWeight: "bold" }}>-Drip Mix: </span> <span>Randomized traits and characteristics are blended in holographic form creating never before seen aesthetic mashups.</span></div>
                 <div style={{ marginBottom: "1rem" }}><span style={{ fontWeight: "bold" }}>-Industrial Design: </span> <span>MiHolograms are long-lasting design objects made of an 8-inch x 10-inch Holographic Print affixed to a thermoplastic mounting plate.</span></div>
@@ -60,10 +62,13 @@ export default function Home() {
                     picture={false}
                 />}
 
+            <div style={{ width: "43em", maxWidth: "70%", borderBottom: "1px solid #ffffff", marginTop: "5rem", marginBottom: "5rem" }} />
+
+            <img src={Header} style={{width: "43em", maxWidth: "95%", border: "2px solid grey" }}></img>
 
 
             <div style={{ width: "43em", maxWidth: "70%", borderBottom: "1px solid #ffffff", marginTop: "5rem", marginBottom: "5rem" }} />
-            
+
             <VideoBox />
 
             <div style={{ width: "43em", maxWidth: "70%", borderBottom: "1px solid #ffffff", marginTop: "5rem", marginBottom: "5rem" }} />
