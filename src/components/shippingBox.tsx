@@ -97,7 +97,7 @@ export default function ShippingBox() {
     const num = 0;
     const { isConnected } = useAccount();
     const { register, handleSubmit, getValues, formState: { errors } } = useForm<FormValues>();
-    const contractAddress = "0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d";
+    const contractAddress = "0xF5060182d45260FD72dd52cf79abB3BE4C4f8d01";
     const submit1 = handleSubmit((data) => sell1(data));
     const submit2 = handleSubmit((data) => sell3(data));
     const submit3 = handleSubmit((data) => sell10(data));
