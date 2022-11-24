@@ -24,8 +24,9 @@ a {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
 }
 
 .DetailsText {
@@ -36,6 +37,7 @@ a {
   align-items: left;
   max-width: 43em;
   margin: 3em 1em 3em 1em;
+  padding: 0rem 1rem;
 }
 
 .GifBlock {
@@ -48,6 +50,10 @@ a {
   margin-top: 4rem;
   margin-bottom: 8rem;
   flex-wrap: wrap;
+}
+
+.sideGif {
+  max-height: 100%;
 }
 
 .sideGif a img {
@@ -144,12 +150,23 @@ input.SubmitButton:active {
   margin-bottom: 2rem;
 }
 
+.FrameContainer img {
+  width: 250px;
+  height: 310px;
+}
+
+@media screen and (max-width: 720px) {
+  .FrameContainer img {
+    width: 100%;
+    height: auto;
+  }
+}
 .PictureBox {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 1rem;
-  padding: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .PictureBox div a {
@@ -161,7 +178,6 @@ input.SubmitButton:active {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 2rem;
   width: 43em;
   max-width: 70%;
   height: auto;
