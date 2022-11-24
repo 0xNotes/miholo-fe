@@ -64,8 +64,7 @@ export default function Home() {
 
             <div style={{ width: "43em", maxWidth: "70%", borderBottom: "1px solid #ffffff", marginTop: "5rem", marginBottom: "5rem" }} />
 
-            <img src={Header} style={{width: "43em", maxWidth: "95%", border: "2px solid grey" }}></img>
-
+            <img src={Header} style={{width: "43em", maxWidth: "90%", marginLeft: "1rem", marginRight: "1rem", border: "2px solid grey" }}></img>
 
             <div style={{ width: "43em", maxWidth: "70%", borderBottom: "1px solid #ffffff", marginTop: "5rem", marginBottom: "5rem" }} />
 
