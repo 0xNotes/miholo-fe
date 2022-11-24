@@ -13,7 +13,7 @@ import Header from "../assets/header.jpg";
 
 export default function Home() {
 
-    const shipping = true;
+    const shipping = false;
 
     return (
         <div className="Container">
