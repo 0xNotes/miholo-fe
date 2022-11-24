@@ -108,7 +108,7 @@ export default function ShippingBox() {
         address: contractAddress,
         abi: MiHoloABI,
         functionName: 'sold',
-        chainId: 5,
+        chainId: 1,
         watch: true
     })
 
