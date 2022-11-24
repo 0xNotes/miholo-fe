@@ -13,7 +13,7 @@ export default function PictureFrame(
 ) {
     return (
         <div className="FrameContainer" >
-            <img src={image} style={{height: "310px", width: "250px", objectFit: "cover", marginBottom: "0.1rem", border: "1px solid #f6cbcb"}}></img>
+            <img src={image} style={{objectFit: "cover", marginBottom: "0.1rem", border: "1px solid #f6cbcb"}}></img>
             <a href={link} className="CollectionText">{collection}</a>
         </div>
 
