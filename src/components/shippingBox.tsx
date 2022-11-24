@@ -236,7 +236,7 @@ export default function ShippingBox() {
                 <div style={{ borderBottom: "1px solid #707070", marginBottom: "1rem" }} />
                 <div>In order to fulfill your order, we need your mailing address. Please input this info before minting: </div>
                 <div>
-                    <div style={{ marginLeft: "12rem", marginTop: "1.5rem" }}>
+                    <div className="MailingAddressText">
                         Mailing Address
                     </div>
                     <form>

@@ -1,6 +1,6 @@
 @font-face {
   font-family: Hiragino;
-  src: url("../assets/Hiragino_W3.otf") format("oft");
+  src: url("../assets/Hiragino_W3.otf");
 }
 body {
   background-image: url("../assets/bgtile1.gif");
@@ -241,4 +241,16 @@ button.SubmitButton:active {
   color: red;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+.MailingAddressText {
+  margin-left: 10rem;
+  margin-top: 1.5rem;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 900px) {
+  .MailingAddressText {
+    margin-left: 0rem;
+  }
 }/*# sourceMappingURL=styles.css.map */
