@@ -35,41 +35,11 @@ type FormValues = {
 };
 
 
-
-// async function addShipping(inputName: string, inputAddress1: string, inputAddress2: string, inputCity: string, inputState: string, inputZip: string, inputCountry: string, inputQty: number) {
-//     try {
-//         // 👇️ const data: CreateUserResponse
-//         const { data } = await axios.post<ShippingResponse>(
-//             'https://sigil.systems/add_shipping',
-//             { name: inputName, address_line_1: inputAddress1, address_line_2: inputAddress2, city: inputCity, state: inputState, zip: inputZip, country: inputCountry, qty: inputQty },
-//             {
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                     Accept: 'application/json',
-//                 },
-//             },
-//         );
-
-//         console.log(JSON.stringify(data, null, 4));
-
-//         return data;
-//     } catch (error) {
-//         if (axios.isAxiosError(error)) {
-//             console.log('error message: ', error.message);
-//             // 👇️ error: AxiosError<any, any>
-//             return error.message;
-//         } else {
-//             console.log('unexpected error: ', error);
-//             return 'An unexpected error occurred';
-//         }
-//     }
-// }
-
 async function addShipping(inputName: string, inputAddress1: string, inputAddress2: string, inputCity: string, inputState: string, inputZip: string, inputCountry: string, inputQty: number, inputEmail: string, inputTxn?: any,) {
     try {
         // 👇️ const data: CreateUserResponse
         const { data } = await axios.post<ShippingResponse>(
-            'http://localhost:3000/addShipping',
+            'https://sigil.systems/addShipping',
             { name: inputName, address_line_1: inputAddress1, address_line_2: inputAddress2, city: inputCity, state: inputState, zip: inputZip, country: inputCountry, qty: inputQty, txn: inputTxn, email: inputEmail },
             {
                 headers: {
@@ -98,7 +68,7 @@ async function addPreShipping(inputName: string, inputAddress1: string, inputAdd
     try {
         // 👇️ const data: CreateUserResponse
         const { data } = await axios.post<ShippingResponse>(
-            'http://localhost:3000/addPreShipping',
+            'https://sigil.systems/addPreShipping',
             { name: inputName, address_line_1: inputAddress1, address_line_2: inputAddress2, city: inputCity, state: inputState, zip: inputZip, country: inputCountry, qty: inputQty, txn: inputTxn, email: inputEmail },
             {
                 headers: {
@@ -127,6 +97,7 @@ export default function ShippingBox() {
     const num = 0;
     const { isConnected } = useAccount();
     const { register, handleSubmit, getValues, formState: { errors } } = useForm<FormValues>();
+    const contractAddress = "";
     const submit1 = handleSubmit((data) => sell1(data));
     const submit2 = handleSubmit((data) => sell3(data));
     const submit3 = handleSubmit((data) => sell10(data));
@@ -134,7 +105,7 @@ export default function ShippingBox() {
     const [name, setName] = useState("");
 
     const contractRead = useContractRead({
-        address: '0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d',
+        address: contractAddress,
         abi: MiHoloABI,
         functionName: 'sold',
         chainId: 5,
@@ -145,14 +116,14 @@ export default function ShippingBox() {
 
     const prep1 = usePrepareSendTransaction({
         request: {
-            to: "0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d",
+            to: contractAddress,
             value: utils.parseEther('0.18'),
         },
     })
 
     const prep3 = usePrepareSendTransaction({
         request: {
-            to: "0xCaDadB2CF60f456B8194E9948cA176b4DB3Aa50d",
+            to: contractAddress,
             value: utils.parseEther("0.5"),
         },
     })
@@ -169,7 +140,7 @@ export default function ShippingBox() {
         ...prep1.config,
         onSuccess() {
             const hash = String(send1.data?.hash);
-            addShipping(getValues("name"), getValues("address_line_1"), getValues("address_line_2"), getValues("city")
+            addPreShipping(getValues("name"), getValues("address_line_1"), getValues("address_line_2"), getValues("city")
                 , getValues("state"), getValues("zip"), getValues("country"), 1, getValues("email"), hash);    
         }    
     });
@@ -179,7 +150,7 @@ export default function ShippingBox() {
         ...prep3.config,
         onSuccess() {
             const hash = String(send1.data?.hash);
-            addShipping(getValues("name"), getValues("address_line_1"), getValues("address_line_2"), getValues("city")
+            addPreShipping(getValues("name"), getValues("address_line_1"), getValues("address_line_2"), getValues("city")
                 , getValues("state"), getValues("zip"), getValues("country"), 3, getValues("email"), hash);    
         }
     });
@@ -188,7 +159,7 @@ export default function ShippingBox() {
         ...prep10.config,
         onSuccess() {
             const hash = String(send1.data?.hash);
-            addShipping(getValues("name"), getValues("address_line_1"), getValues("address_line_2"), getValues("city")
+            addPreShipping(getValues("name"), getValues("address_line_1"), getValues("address_line_2"), getValues("city")
                 , getValues("state"), getValues("zip"), getValues("country"), 10, getValues("email"), hash);    
         }
     });
@@ -287,7 +258,7 @@ export default function ShippingBox() {
                             </div>}
 
                     </form>
-                    <div style={{textAlign: "center"}}>Please leave this page open for up to two minutes after signing while the transaction completes.</div>
+                    <div style={{textAlign: "center", marginBottom: "1rem"}}>Please leave this page open for up to two minutes after signing while the transaction completes.</div>
                 </div>
                 <div>
                 </div>

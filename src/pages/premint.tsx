@@ -17,7 +17,7 @@ export default function Home() {
 
     return (
         <div className="Container">
-            <img src={logo} style={{ marginTop: "4rem", maxWidth: "95%" }}></img>
+            <img src={logo} style={{ marginTop: "1rem", maxWidth: "95%" }}></img>
             <div className="ImgTextBlock">
                 <div className="sideGif">
                 <a href="https://www.sacred-texts.com/jud/doth/doth04.htm" target="_blank"><img src={pc} style={{ width: "auto", maxHeight: "10rem", marginLeft: "4rem" }} ></img></a>
