@@ -7,9 +7,6 @@ import MiHoloABI from "../assets/ABI.json";
 import { utils } from 'ethers'
 import { useState } from 'react';
 
-//0xBCd71c002e52861051389BC4eE2f2f033eD9eF41
-
-
 type ShippingResponse = {
     name: string;
     address_line_1: string;
@@ -241,7 +238,7 @@ export default function ShippingBox() {
                     </div>
                     <form>
                         <div className="ShippingForm">
-                            <input className="ShippingInputText" id="nameForm" type="text" placeholder="Name*" {...register("name", { required: "This Field is Required" })} />
+                            <input className="ShippingInputText" id="nameForm" type="text" placeholder="Name or Pseudonym*" {...register("name", { required: "This Field is Required" })} />
                             {errors.name?.type === 'required' && <div className="ErrorText">Name is required</div>}
                             <input className="ShippingInputText" type="text" placeholder="Address Line 1*" {...register("address_line_1", { required: true })} />
                             {errors.address_line_1?.type === 'required' && <div className="ErrorText">Address Line 1 is required</div>}
