@@ -66,9 +66,6 @@ export default function Home() {
 
             <div style={{ width: "43em", maxWidth: "70%", borderBottom: "1px solid #ffffff", marginTop: "5rem", marginBottom: "5rem" }} />
 
-
-            <div style={{ width: "43em", maxWidth: "70%", borderBottom: "1px solid #ffffff", marginTop: "5rem", marginBottom: "5rem" }} />
-
             <VideoBox />
 
             <div style={{ width: "43em", maxWidth: "70%", borderBottom: "1px solid #ffffff", marginTop: "5rem", marginBottom: "5rem" }} />
